@@ -6,4 +6,6 @@ public interface TransacaoService {
 
     void createTransaction(Transacao transacao);
 
+    void deleteAllTransactions();
+
 }

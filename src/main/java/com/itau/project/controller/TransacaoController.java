@@ -24,11 +24,16 @@ public class TransacaoController {
 
     @PostMapping
     public ResponseEntity<Void> createTransaction(@Valid @RequestBody TransacaoDTO transacaoDto) {
-        if (transacaoDto.getValor() < 0 || transacaoDto.getDataHora().isAfter(OffsetDateTime.now()) || transacaoDto.getValor() == null || transacaoDto.getDataHora() == null) {
+        if (transacaoDto.getValor() < 0 || transacaoDto.getDataHora().isAfter(OffsetDateTime.now())) {
             return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
         }
-        Transacao transacao = modelMapper.map(transacaoDto, Transacao.class);
-        transacaoService.createTransaction(transacao);
+        transacaoService.createTransaction(modelMapper.map(transacaoDto, Transacao.class));
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deleteAllTransactions() {
+        transacaoService.deleteAllTransactions();
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

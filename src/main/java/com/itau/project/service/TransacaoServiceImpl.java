@@ -19,4 +19,9 @@ public class TransacaoServiceImpl implements TransacaoService{
         transacoes.add(transacao);
     }
 
+    @Override
+    public void deleteAllTransactions() {
+        transacoes.clear();
+    }
+
 }
