@@ -1,6 +1,7 @@
 package com.itau.project.controller;
 
 import com.itau.project.dto.TransacaoDTO;
+import com.itau.project.model.Estatistica;
 import com.itau.project.model.Transacao;
 import com.itau.project.service.TransacaoService;
 import jakarta.validation.Valid;
